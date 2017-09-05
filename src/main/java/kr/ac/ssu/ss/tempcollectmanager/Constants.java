@@ -11,8 +11,20 @@ package kr.ac.ssu.ss.tempcollectmanager;
  * @author lssang
  */
 public interface Constants {
-    public int DONE = 0;
-    public int ALREADY_EXIST = 1;
+    
+    //User Id Control
+    public int INIT_RESULT = 0;
+    public int DONE = 1;
+    public int ALREADY_EXIST = 2;
+    
+    //ButtonType
+    public int ON = 1;
+    public int OFF = 2;
+    
+    //Collector Type
+    public int VISION = 10;
+    public int BIO = 20;
+    public int VOICE = 30;    
     
     //Collector Status
     public int RUNNING = 0;

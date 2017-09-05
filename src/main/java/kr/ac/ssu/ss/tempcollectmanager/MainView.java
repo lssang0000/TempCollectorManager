@@ -12,6 +12,7 @@ import kr.ac.ssu.ss.collectors.CollectorBio;
 import kr.ac.ssu.ss.collectors.CollectorVision;
 import kr.ac.ssu.ss.collectors.CollectorVoice;
 
+import javax.swing.JLabel;
 /**
  *
  * @author lssang
@@ -309,7 +310,7 @@ public class MainView extends javax.swing.JFrame {
                     .addComponent(jButton_on_voice)
                     .addComponent(jButton_off_voice)
                     .addComponent(status_voice))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Home", jPanelHome);
@@ -328,13 +329,11 @@ public class MainView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelSystemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
-                    .addGroup(jPanelSystemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jScrollPane3)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelSystemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel11))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanelSystemLayout.setVerticalGroup(
@@ -343,16 +342,16 @@ public class MainView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel8)
                 .addGap(2, 2, 2)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("System", jPanelSystem);
@@ -432,7 +431,7 @@ public class MainView extends javax.swing.JFrame {
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabe_addResult)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("User", jPanelUser);
@@ -456,8 +455,8 @@ public class MainView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabelTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane1)
-                .addContainerGap())
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -465,26 +464,12 @@ public class MainView extends javax.swing.JFrame {
 
     private void jButton_on_bioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_on_bioActionPerformed
         // TODO add your handling code here:
-        String deviceId = deviceId_bio.getText();
-        Collector c = new CollectorBio();
-        
-        if(c.getStatus(currnt_id, deviceId) == Constants.RUNNING){
-            status_bio.setText("Running");
-        }else if(c.getStatus(currnt_id, deviceId) == Constants.STOPPED){
-            status_bio.setText("Stopeed");
-        }        
+        pushOnOff(Constants.BIO, Constants.ON);        
     }//GEN-LAST:event_jButton_on_bioActionPerformed
 
     private void jButton_on_visionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_on_visionActionPerformed
         // TODO add your handling code here:
-        String deviceId = deviceId_vision.getText();
-        Collector c = new CollectorVision();
-        
-        if(c.getStatus(currnt_id, deviceId) == Constants.RUNNING){
-            status_vision.setText("Running");
-        }else if(c.getStatus(currnt_id, deviceId) == Constants.STOPPED){
-            status_vision.setText("Stopeed");
-        }   
+        pushOnOff(Constants.VISION, Constants.ON);  
     }//GEN-LAST:event_jButton_on_visionActionPerformed
 
     private void jButton_addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_addUserActionPerformed
@@ -516,13 +501,13 @@ public class MainView extends javax.swing.JFrame {
             currnt_name = um.getNameById(id);                 
             jTextField_searchUserName.setText(currnt_name);
             jLabe_searchResult.setText("Search by id... currunt user : "+currnt_name+"("+currnt_id+")");
-            setHomeInfo(id);            
+            setHomeInfo(currnt_id);            
         }else if(um.containName(name)){
             currnt_name = name;
             currnt_id = um.getIdByName(name);
-            jTextField_searchUserId.setText(currnt_name);
+            jTextField_searchUserId.setText(currnt_id);
             jLabe_searchResult.setText("Search by name...currunt user : "+currnt_name+"("+currnt_id+")");
-            setHomeInfo(id);
+            setHomeInfo(currnt_id);
         }else{
             jLabe_searchResult.setText("User not found.");
         }
@@ -530,29 +515,87 @@ public class MainView extends javax.swing.JFrame {
 
     private void jButton_on_voiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_on_voiceActionPerformed
         // TODO add your handling code here:
-        String deviceId = deviceId_voice.getText();
-        Collector c = new CollectorVoice();
-        
-        if(c.getStatus(currnt_id, deviceId) == Constants.RUNNING){
-            status_voice.setText("Running");
-        }else if(c.getStatus(currnt_id, deviceId) == Constants.STOPPED){
-            status_voice.setText("Stopeed");
-        }   
+        pushOnOff(Constants.VOICE, Constants.ON);   
     }//GEN-LAST:event_jButton_on_voiceActionPerformed
 
     private void jButton_off_visionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_off_visionActionPerformed
         // TODO add your handling code here:
+        pushOnOff(Constants.VISION, Constants.OFF);
     }//GEN-LAST:event_jButton_off_visionActionPerformed
 
     private void jButton_off_bioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_off_bioActionPerformed
         // TODO add your handling code here:
+        pushOnOff(Constants.BIO, Constants.OFF);
     }//GEN-LAST:event_jButton_off_bioActionPerformed
 
     private void jButton_off_voiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_off_voiceActionPerformed
         // TODO add your handling code here:
+        pushOnOff(Constants.VOICE, Constants.OFF);
     }//GEN-LAST:event_jButton_off_voiceActionPerformed
     
+    private void setStatus(int collectorType, String deviceId){
+        
+        Collector collector = null;
+        String msg = "";
+        
+        switch(collectorType){
+            case Constants.VISION:
+                collector = new CollectorVision();
+                break;
+            case Constants.BIO:
+                collector = new CollectorBio();
+                break;
+            case Constants.VOICE:
+                collector = new CollectorVoice();
+                break;                
+           default:
+        }
+        
+        if(collector.getStatus(currnt_id, deviceId) == Constants.RUNNING){
+            msg = "Running";
+        }else if(collector.getStatus(currnt_id, deviceId) == Constants.STOPPED){
+            msg = "Stopped"; status_voice.setText("Stopeed");
+        }
+        
+        switch(collectorType){
+            case Constants.VISION: status_vision.setText(msg); break;
+            case Constants.BIO: status_bio.setText(msg); break;
+            case Constants.VOICE: status_voice.setText(msg); break;            
+           default:
+        }
+    }
     
+    private void pushOnOff(int collectorType, int btnType){
+        Collector collector = null;
+        String deviceId = "";
+        
+        switch(collectorType){
+            case Constants.VISION: 
+                deviceId = deviceId_vision.getText();
+                collector = new CollectorVision(); break;
+            case Constants.BIO: 
+                deviceId = deviceId_bio.getText();
+                collector = new CollectorBio(); break;
+            case Constants.VOICE: 
+                deviceId = deviceId_voice.getText();
+                collector = new CollectorVoice(); break;              
+           default:
+        }
+        
+        int res = Constants.INIT_RESULT;
+        
+        switch(btnType){
+            case Constants.ON :  res= collector.startCollecting(currnt_id, deviceId); break;
+            case Constants.OFF :  res= collector.stopCollecting(currnt_id, deviceId); break;
+        }
+               
+        if( res == Constants.DONE){
+            setStatus(collectorType, deviceId);
+        }else{
+            //error!
+        }       
+    }
+            
     private void setHomeInfo(String userId){
        deviceId_vision.setText(um.getUser(userId).getVision_d_id());
        deviceId_bio.setText(um.getUser(userId).getBio_d_id());
