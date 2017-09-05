@@ -19,6 +19,7 @@ public class User {
     private String voice_d_id;
 
     public User(String id, String name) {
+        //inti Obect
         this.id = id;
         this.name = name;
         vision_d_id = "cam0";
